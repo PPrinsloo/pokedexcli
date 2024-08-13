@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/PPrinsloo/pokedexcli/poke_api"
 	"os"
 )
 
@@ -30,6 +31,16 @@ func commandExit(commands map[string]cliCommand) error {
 	return nil
 }
 
+func location(_ map[string]cliCommand) error {
+	poke_api.Locations()
+	return nil
+}
+
+func locations_back(_ map[string]cliCommand) error {
+	poke_api.LocationsBack()
+	return nil
+}
+
 func commands() map[string]cliCommand {
 	return map[string]cliCommand{
 		"help": {
@@ -41,6 +52,16 @@ func commands() map[string]cliCommand {
 			name:        "exit",
 			description: "Exist the Pokedex",
 			callback:    commandExit,
+		},
+		"map": {
+			name:        "map",
+			description: "prints some locations names",
+			callback:    location,
+		},
+		"mapb": {
+			name:        "mapb",
+			description: "prints previous locations names",
+			callback:    locations_back,
 		},
 	}
 }

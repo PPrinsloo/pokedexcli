@@ -23,6 +23,7 @@ func main() {
 		if input == "" {
 			fmt.Println("Please enter a command.")
 		}
+
 		if command, ok := commands[input]; ok {
 			if err := command.callback(commands); err != nil {
 				fmt.Println("Error executing command:", err)
